@@ -1,12 +1,12 @@
 {
 	"name": "devian-v2",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A simple discord bot",
 	"repository": "git@github.com:johncovv/devian-v2.git",
 	"author": "John Covv <contato@johncovv.com>",
 	"license": "MIT",
 	"engines": {
-		"node": ">=20.6.0"
+		"node": ">=20.0.0"
 	},
 	"scripts": {
 		"dev": "set \"NODE_ENV=development\" && tsnd --transpile-only --respawn -r tsconfig-paths/register src/index.ts"
