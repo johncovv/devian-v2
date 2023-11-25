@@ -1,4 +1,4 @@
-import { CacheType, ChatInputCommandInteraction, Client, Events, Interaction } from "discord.js";
+import { type CacheType, type ChatInputCommandInteraction, type Client, Events, type Interaction } from "discord.js";
 
 export default {
 	type: Events.InteractionCreate,

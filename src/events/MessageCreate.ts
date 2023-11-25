@@ -1,4 +1,4 @@
-import { Client, Events, Message } from "discord.js";
+import { type Client, Events, type Message } from "discord.js";
 
 import { env } from "@/config/env";
 import { getCommandAndArgs } from "@/shared/utils/get-command-and-args";

@@ -5,4 +5,4 @@ export default {
 	async execute(message, args) {
 		await message.reply(`Arguments: ${args.join(", ")}`);
 	},
-} as ICommand;
+} satisfies ICommand;

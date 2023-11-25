@@ -1,6 +1,6 @@
-import { ChatInputCommandInteraction } from "discord.js";
+import type { ChatInputCommandInteraction } from "discord.js";
 
-import { IOptionFunction } from "@/@types/global.d";
+import type { IOptionFunction } from "@/@types/global.d";
 import { env } from "@/config/env";
 
 export default {
@@ -9,4 +9,4 @@ export default {
 	async execute(interaction: ChatInputCommandInteraction) {
 		await interaction.reply(`The prefix is **\`${env.PREFIX}\`**`);
 	},
-} as IOptionFunction;
+} satisfies IOptionFunction;

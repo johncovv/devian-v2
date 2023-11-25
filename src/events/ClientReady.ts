@@ -1,4 +1,4 @@
-import { Client, Events, REST, Routes } from "discord.js";
+import { type Client, Events, REST, Routes } from "discord.js";
 
 import { env } from "@/config/env";
 import { generateCommandData } from "@/shared/utils/generate-command-data";

@@ -4,7 +4,7 @@ import { env } from "@/config/env";
 import { registerEvents } from "@/shared/utils/register-events";
 import { registerCommands } from "@/shared/utils/register-commands";
 
-(async () => {
+void (async () => {
 	const client = new Client({
 		intents: [
 			GatewayIntentBits.Guilds,
@@ -19,5 +19,5 @@ import { registerCommands } from "@/shared/utils/register-commands";
 	await registerCommands(client);
 	await registerEvents(client);
 
-	client.login(env.TOKEN);
+	void client.login(env.TOKEN);
 })();

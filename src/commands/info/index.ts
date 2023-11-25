@@ -29,8 +29,15 @@ export default {
 	async execute(interaction) {
 		const type = interaction.options.getString("type");
 
-		if (!type) return;
+		if (type == null) return;
 
-		this.optionFunctions?.[type].execute(interaction);
+		if (this.optionFunctions?.[type] == null) {
+			return await interaction.reply({
+				content: `I don't know what you mean by \`${type}\``,
+				ephemeral: true,
+			});
+		}
+
+		await this.optionFunctions[type].execute(interaction);
 	},
-} as ICommand;
+} satisfies ICommand;

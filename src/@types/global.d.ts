@@ -1,6 +1,4 @@
-// add commands on discord client (global)
-
-import { ApplicationCommandOption, CacheType, ChatInputCommandInteraction, Collection, Message } from "discord.js";
+import type { ApplicationCommandOption, CacheType, ChatInputCommandInteraction, Collection, Message } from "discord.js";
 
 interface IBaseCommand {
 	name: string;
@@ -34,7 +32,7 @@ declare global {
 			  }
 			: {
 					type: Type;
-					execute: (message: Message, args: Array<string>) => Promise<unknown>;
+					execute: (message: Message, args: string[]) => Promise<unknown>;
 			  });
 }
 

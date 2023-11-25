@@ -1,11 +1,11 @@
-import { Client } from "discord.js";
+import type { Client } from "discord.js";
 import path from "path";
 import fs from "fs";
 
-import { IOptionFunction } from "@/@types/global";
+import type { IOptionFunction } from "@/@types/global";
 
 export async function getCommandOptions(client: Client, folderName: string) {
-	const setting = require(path.join(process.cwd(), "src", "commands", folderName, ".setting.ts")).default;
+	const setting = require(path.join(process.cwd(), "src", "commands", folderName, "index.ts")).default;
 
 	const optionsFiles = fs
 		.readdirSync(path.join(process.cwd(), "src", "commands", folderName))

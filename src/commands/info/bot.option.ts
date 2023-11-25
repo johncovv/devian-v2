@@ -1,6 +1,6 @@
-import { ChatInputCommandInteraction } from "discord.js";
+import { type ChatInputCommandInteraction } from "discord.js";
 
-import { IOptionFunction } from "@/@types/global.d";
+import { type IOptionFunction } from "@/@types/global.d";
 
 export default {
 	name: "bot",
@@ -8,4 +8,4 @@ export default {
 	async execute(interaction: ChatInputCommandInteraction) {
 		await interaction.reply(`The bot is runnin on node version \`${process.version}\``);
 	},
-} as IOptionFunction;
+} satisfies IOptionFunction;

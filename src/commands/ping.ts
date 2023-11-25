@@ -3,6 +3,6 @@ export default {
 	description: "Reply with pong!",
 	type: "MESSAGE",
 	async execute(interaction) {
-		interaction.reply("Pong 🏓");
+		await interaction.reply("Pong 🏓");
 	},
-} as ICommand;
+} satisfies ICommand;

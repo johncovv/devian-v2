@@ -1,10 +1,6 @@
-import {
-	ApplicationCommandOption,
-	ApplicationCommandOptionType,
-	SlashCommandBuilder,
-	SlashCommandStringOption,
-	ApplicationCommandOptionChoiceData,
-} from "discord.js";
+import { type ApplicationCommandOption, ApplicationCommandOptionType, SlashCommandBuilder } from "discord.js";
+
+import { commandOptionBuilder } from "@/shared/machine/command-option-builder";
 
 export function generateCommandData(commands: Array<ICommand<"INTERACTION">>) {
 	const commandsBody = [];
@@ -19,23 +15,11 @@ export function generateCommandData(commands: Array<ICommand<"INTERACTION">>) {
 	return commandsBody;
 }
 
-function registerOptions(command: SlashCommandBuilder, options: Array<ApplicationCommandOption>) {
+function registerOptions(command: SlashCommandBuilder, options: ApplicationCommandOption[]) {
 	for (const option of options ?? []) {
 		switch (option.type) {
 			case ApplicationCommandOptionType.String:
-				const stringOption = new SlashCommandStringOption()
-					.setName(option.name)
-					.setDescription(option.description)
-					.setRequired(option.required ?? false);
-
-				(option as any)?.choices?.forEach((choice: ApplicationCommandOptionChoiceData<string>) => {
-					stringOption.addChoices({
-						name: choice.name,
-						value: choice.value,
-					});
-				});
-
-				command.addStringOption(stringOption);
+				commandOptionBuilder[option.type](command, options);
 				break;
 		}
 	}
