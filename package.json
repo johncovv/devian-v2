@@ -6,7 +6,7 @@
 	"author": "John Covv <contato@johncovv.com>",
 	"license": "MIT",
 	"engines": {
-		"node": ">=20.6.0"
+		"node": ">=20.0.0"
 	},
 	"scripts": {
 		"dev": "set \"NODE_ENV=development\" && tsnd --transpile-only --respawn -r tsconfig-paths/register src/index.ts"
