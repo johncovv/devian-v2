@@ -1,7 +1,8 @@
 export default {
 	name: "echo",
-	description: "Return all the arguments passed",
+	description: "Return all the arguments",
+	type: "MESSAGE",
 	async execute(message, args) {
-		await message.reply(args.join(", "));
+		await message.reply(`Arguments: ${args.join(", ")}`);
 	},
-} as ICommand;
+} satisfies ICommand;

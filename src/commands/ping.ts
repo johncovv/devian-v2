@@ -1,7 +1,8 @@
 export default {
 	name: "ping",
 	description: "Reply with pong!",
-	async execute(message, args) {
-		message.reply("Pong 🏓");
+	type: "MESSAGE",
+	async execute(interaction) {
+		await interaction.reply("Pong 🏓");
 	},
-} as ICommand;
+} satisfies ICommand;

@@ -1,4 +1,4 @@
-import { Client, Events, Message } from "discord.js";
+import { type Client, Events, type Message } from "discord.js";
 
 import { env } from "@/config/env";
 import { getCommandAndArgs } from "@/shared/utils/get-command-and-args";
@@ -8,8 +8,6 @@ export default {
 	async execute(client: Client, message: Message) {
 		if (message.author.bot) return;
 
-		console.log(message.content);
-
 		if (!message.content.startsWith(env.PREFIX)) return;
 
 		const messageContent = message.content.slice(env.PREFIX.length).trim();
@@ -18,7 +16,7 @@ export default {
 
 		const command = client.commands.get(commandName);
 
-		if (!command) return;
+		if (!command || command.type !== "MESSAGE") return;
 
 		try {
 			await command.execute(message, ...args);
