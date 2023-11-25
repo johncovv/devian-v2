@@ -8,7 +8,7 @@ export async function registerEvents(client: Client) {
 	for (const file of eventFiles) {
 		const event = require(path.join(process.cwd(), "src", "events", file)).default;
 
-		if(event.ignore) continue;
+		if (event.ignore) continue;
 
 		if (event.once) {
 			client.once(event.type, (...args) => event.execute(client, ...args));

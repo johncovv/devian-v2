@@ -19,6 +19,7 @@ Then, navigate into the project directory:
 ```bash
 cd devian-v2
 ```
+
 <br/>
 
 Install the dependencies:
@@ -26,7 +27,9 @@ Install the dependencies:
 ```bash
 yarn install
 ```
+
 or
+
 ```bash
 npm install
 ```
@@ -48,12 +51,13 @@ To start the development server, run:
 ```bash
 yarn dev
 ```
+
 or
+
 ```bash
 npm run dev
 ```
 
 This will start the bot in development mode. You can now make changes to the code and the bot will automatically\* restart when it detects any changes.
-
 
 \* New `events` or `command` files will only be listen on the fast reload when the first register occours.
