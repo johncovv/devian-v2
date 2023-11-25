@@ -2,7 +2,7 @@ import { Client } from "discord.js";
 import path from "path";
 import fs from "fs";
 
-export function registerCommands(client: Client) {
+export async function registerCommands(client: Client) {
 	const commandFiles = fs.readdirSync(path.join(process.cwd(), "src", "commands"));
 
 	for (const file of commandFiles) {
