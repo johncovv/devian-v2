@@ -37,6 +37,8 @@ export default {
 
 async function deleteMessages(channel: GuildTextBasedChannel, amount: number) {
 	if (amount > 100) {
+		await channel.bulkDelete(100, true);
+
 		return await deleteMessages(channel, amount - 100);
 	}
 
