@@ -20,7 +20,7 @@ export default {
 		let [amount] = args ?? [];
 
 		if (!amount || isNaN(Number(amount))) {
-			void response.edit("You must provide an amount of messages to clear!");
+			void response.edit("You must provide a valid amount of messages to clear!");
 			return;
 		}
 
