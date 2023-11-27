@@ -1,14 +1,8 @@
 import { type Client, type Message, ChannelType, Events } from "discord.js";
 import { type ChatCompletionMessageParam } from "openai/resources/chat";
-import OpenAI from "openai";
 
 import { env } from "@/config/env";
 import { getCommandAndArgs } from "@/shared/utils/get-command-and-args";
-import { parseTextAsCode } from "@/shared/utils/parse-text-as-code";
-
-const openai = new OpenAI({
-	apiKey: env.OPENAI_TOKEN,
-});
 
 export default {
 	type: Events.MessageCreate,
@@ -22,33 +16,29 @@ export default {
 
 		if (!message.content.startsWith(env.PREFIX)) return;
 
-		const messageContent = message.content.slice(env.PREFIX.length).trim();
-
-		const [commandName, ...args] = getCommandAndArgs(messageContent);
-
-		const command = client.commands.get(commandName);
-
-		if (!command || command.type !== "MESSAGE") return;
-
-		try {
-			await command.execute(message, ...args);
-		} catch (error) {
-			console.error(error);
-		}
+		return handleCommand(message);
 	},
 };
 
-export async function handleDirectMessage(message: Message) {
+function handleCommand(message: Message) {
+	const messageContent = message.content.slice(env.PREFIX.length).trim();
+
+	const [commandName, ...args] = getCommandAndArgs(messageContent);
+
+	const command = message.client.commands.get(commandName);
+
+	if (!command || command.type !== "MESSAGE") return;
+
+	try {
+		return command.execute(message, ...args);
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+async function handleDirectMessage(message: Message) {
 	if (message.content.startsWith(env.PREFIX)) {
-		const messageContent = message.content.slice(env.PREFIX.length).trim();
-
-		const [commandName] = getCommandAndArgs(messageContent);
-
-		if (commandName === "code") {
-			const code = messageContent.slice(commandName.length).trim();
-
-			await message.channel.send("Code:\n" + parseTextAsCode(code));
-		}
+		return handleCommand(message);
 	}
 
 	void message.channel.sendTyping(); // first typing to avoid the 5 seconds delay
@@ -62,7 +52,9 @@ export async function handleDirectMessage(message: Message) {
 
 		const filteredLast10Messages = filterLastMessages(message, last10Messages);
 
-		const response = await openai.chat.completions.create({
+		const { openAI } = message.client;
+
+		const response = await openAI.chat.completions.create({
 			model: "gpt-3.5-turbo-16k-0613",
 			n: 1,
 			messages: [

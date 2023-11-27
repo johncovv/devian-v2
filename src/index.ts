@@ -1,4 +1,5 @@
 import { Client, Collection, GatewayIntentBits, Partials } from "discord.js";
+import OpenAI from "openai";
 
 import { env } from "@/config/env";
 import { registerEvents } from "@/shared/functions/register-events";
@@ -16,6 +17,8 @@ void (async () => {
 		],
 		partials: [Partials.Channel],
 	});
+
+	client.openAI = new OpenAI({ apiKey: env.OPENAI_TOKEN });
 
 	client.commands = new Collection();
 
