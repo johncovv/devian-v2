@@ -1,9 +1,6 @@
 name: Teste de Build (Node.js 20)
 
 on:
-  push:
-    branches:
-      - develop
   pull_request:
     branches:
       - main
