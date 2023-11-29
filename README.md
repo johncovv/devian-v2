@@ -1,3 +1,5 @@
+[![Teste de Build (Node.js 20)](https://github.com/johncovv/devian-v2/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/johncovv/devian-v2/actions/workflows/build.yml)
+
 # Devian V2
 
 This project a recreation of [johncovv/devian](http://github.com/johncovv/devian) with newest tools and better code.
