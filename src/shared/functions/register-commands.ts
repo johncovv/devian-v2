@@ -4,12 +4,14 @@ import fs from "fs";
 
 import { getCommandOptions } from "./get-command-options";
 
+const commandsPath = path.join(__dirname, "..", "..", "commands");
+
 export async function registerCommands(client: Client) {
-	const commands = fs.readdirSync(path.join(process.cwd(), "src", "commands"), { withFileTypes: true });
+	const commands = fs.readdirSync(commandsPath, { withFileTypes: true });
 
 	for (const item of commands) {
 		if (item.isFile()) {
-			const command = require(path.join(process.cwd(), "src", "commands", item.name)).default;
+			const command = require(path.join(commandsPath, item.name)).default;
 
 			client.commands.set(command.name, command);
 		}
