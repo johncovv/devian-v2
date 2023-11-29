@@ -1,6 +1,6 @@
 {
 	"name": "devian-v2",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "A simple discord bot",
 	"repository": "git@github.com:johncovv/devian-v2.git",
 	"author": "John Covv <contato@johncovv.com>",
@@ -29,6 +29,7 @@
 	},
 	"dependencies": {
 		"discord.js": "^14.14.1",
-		"dotenv": "^16.3.1"
+		"dotenv": "^16.3.1",
+		"openai": "^4.20.0"
 	}
 }

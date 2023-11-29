@@ -9,4 +9,5 @@ export const env = {
 	TOKEN: process.env.TOKEN!,
 	CLIENT_ID: process.env.CLIENT_ID!,
 	PREFIX: process.env.PREFIX ?? "!",
+	OPENAI_TOKEN: process.env.OPENAI_TOKEN!,
 };
