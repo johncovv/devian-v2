@@ -1,5 +1,6 @@
 node_modules/
 out/
+*.zip
 
 .vscode/*
 !.vscode/launch.json
