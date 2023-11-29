@@ -1,19 +1,23 @@
 {
 	"compilerOptions": {
-		"target": "ES2016",
+		"target": "ES2020",
 		"lib": ["ES2022"],
 		"types": ["node"],
 		"module": "CommonJS",
 		"moduleResolution": "Node",
-		"outDir": "./dist",
-		"rootDir": "./src",
+		"baseUrl": "./src",
+		"outDir": "./out",
+		"declaration": false,
 		"strict": true,
 		"esModuleInterop": true,
-		"experimentalDecorators": true,
 		"paths": {
-			"@/*": ["./src/*"]
-		}
+			"@/*": ["./*"]
+		},
+		"sourceMap": false,
+		"skipLibCheck": false,
+		"removeComments": true,
+		"forceConsistentCasingInFileNames": true
 	},
-	"include": ["src/**/*.ts", "src/**/.*.ts"],
+	"include": ["src/**/*.ts"],
 	"exclude": ["node_modules"]
 }
