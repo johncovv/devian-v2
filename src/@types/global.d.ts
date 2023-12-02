@@ -1,4 +1,5 @@
 import type { ApplicationCommandOption, CacheType, ChatInputCommandInteraction, Collection, Message } from "discord.js";
+import type { OpenAIClient } from "@azure/openai";
 import type OpenAI from "openai";
 
 interface IBaseCommand {
@@ -20,6 +21,7 @@ declare module "discord.js" {
 	interface Client {
 		commands: Collection<string, ICommand>;
 		openAI: OpenAI;
+		azureOpenAI: OpenAIClient;
 	}
 }
 

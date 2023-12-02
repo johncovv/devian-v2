@@ -1,4 +1,5 @@
 import { Client, Collection, GatewayIntentBits, Partials } from "discord.js";
+import { AzureKeyCredential, OpenAIClient } from "@azure/openai";
 import OpenAI from "openai";
 
 import { env } from "@/config/env";
@@ -18,7 +19,13 @@ void (async () => {
 		partials: [Partials.Channel],
 	});
 
-	client.openAI = new OpenAI({ apiKey: env.OPENAI_TOKEN });
+	if (env.openai.KEY) {
+		client.openAI = new OpenAI({ apiKey: env.openai.KEY });
+	}
+
+	if (env.azure.OPENAI_KEY) {
+		client.azureOpenAI = new OpenAIClient(env.azure.OPENAI_ENDPOINT, new AzureKeyCredential(env.azure.OPENAI_KEY));
+	}
 
 	client.commands = new Collection();
 
